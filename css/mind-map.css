@@ -1,0 +1,169 @@
+/* Mind Map Visualization Styles */
+.mind-map-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    margin: 20px 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Hostel Block Styles */
+.hostel-block {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    font-size: 18px;
+}
+
+.hostel-block:hover {
+    transform: scale(1.1) translate(-45%, -45%);
+}
+
+.hostel-block.male {
+    background: linear-gradient(135deg, #4E54C8, #8F94FB);
+}
+
+.hostel-block.female {
+    background: linear-gradient(135deg, #FF5F6D, #FFC371);
+}
+
+.hostel-block.active {
+    transform: scale(1.2) translate(-40%, -40%);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.hostel-block.inactive {
+    opacity: 0.5;
+    filter: grayscale(70%);
+    pointer-events: none;
+}
+
+/* Floor Node Styles */
+.floor-node {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: scale(0);
+    z-index: 9;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+
+.floor-node.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.floor-node:hover {
+    transform: scale(1.1);
+}
+
+.floor-node.active {
+    transform: scale(1.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #fc4a1a, #f7b733);
+}
+
+/* Connection Line Styles */
+.connection-line {
+    position: absolute;
+    height: 3px;
+    background-color: rgba(150, 150, 150, 0.5);
+    transform-origin: left center;
+    z-index: 5;
+}
+
+/* Room Container Styles */
+.rooms-container {
+    position: relative;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.rooms-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.selected-location {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #4E54C8;
+    font-weight: 600;
+}
+
+/* Particle Styles */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 2s ease-out;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drawLine {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+.animate-fade-in {
+    animation: fadeInUp 0.5s forwards;
+}
+
+.animate-draw-line {
+    animation: drawLine 0.8s forwards;
+}
